@@ -18,7 +18,6 @@
 package com.viaversion.viaversion.protocols.v26_2to26_3.rewriter;
 
 import com.viaversion.viaversion.api.minecraft.entities.EntityType;
-import com.viaversion.viaversion.api.minecraft.entities.EntityTypes26_2;
 import com.viaversion.viaversion.api.minecraft.entities.EntityTypes26_3;
 import com.viaversion.viaversion.api.minecraft.entitydata.types.EntityDataTypes26_1;
 import com.viaversion.viaversion.api.protocol.packet.PacketWrapper;
@@ -198,6 +197,6 @@ public final class EntityPacketRewriter26_3 extends EntityRewriter<ClientboundPa
 
     @Override
     public EntityType typeFromId(final int type) {
-        return EntityTypes26_2.getTypeFromId(type);
+        return type == 159 ? EntityTypes26_3.PLAYER : EntityTypes26_3.getTypeFromId(type);
     }
 }

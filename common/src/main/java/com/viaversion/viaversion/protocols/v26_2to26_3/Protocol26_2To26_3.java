@@ -120,7 +120,7 @@ public final class Protocol26_2To26_3 extends AbstractProtocol<ClientboundPacket
         });
 
         // Sign editor now takes a sign text slot (back = 0, front = 1) instead of a boolean
-        replaceClientbound(ClientboundPackets26_1.OPEN_SIGN_EDITOR, wrapper -> {
+        registerClientbound(ClientboundPackets26_1.OPEN_SIGN_EDITOR, ClientboundPackets26_3.OPEN_SIGN_EDITOR, wrapper -> {
             wrapper.passthrough(Types.BLOCK_POSITION1_14); // Position
             final boolean front = wrapper.read(Types.BOOLEAN);
             wrapper.write(Types.VAR_INT, front ? 1 : 0); // Sign text slot
