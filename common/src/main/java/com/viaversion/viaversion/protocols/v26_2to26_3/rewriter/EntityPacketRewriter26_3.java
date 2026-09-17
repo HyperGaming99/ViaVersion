@@ -18,6 +18,7 @@
 package com.viaversion.viaversion.protocols.v26_2to26_3.rewriter;
 
 import com.viaversion.viaversion.api.minecraft.entities.EntityType;
+import com.viaversion.viaversion.api.minecraft.entities.EntityTypes26_2;
 import com.viaversion.viaversion.api.minecraft.entities.EntityTypes26_3;
 import com.viaversion.viaversion.api.minecraft.entitydata.types.EntityDataTypes26_1;
 import com.viaversion.viaversion.api.protocol.packet.PacketWrapper;
@@ -150,7 +151,6 @@ public final class EntityPacketRewriter26_3 extends EntityRewriter<ClientboundPa
         protocol.registerServerbound(ServerboundPackets26_3.INTERACT, toOriginalEntityId);
         protocol.registerServerbound(ServerboundPackets26_3.PICK_ITEM_FROM_ENTITY, toOriginalEntityId);
         protocol.registerServerbound(ServerboundPackets26_3.PLAYER_COMMAND, toOriginalEntityId);
-        protocol.registerServerbound(ServerboundPackets26_3.SET_COMMAND_MINECART, toOriginalEntityId);
         protocol.registerServerbound(ServerboundPackets26_3.ENTITY_TAG_QUERY, wrapper -> {
             wrapper.passthrough(Types.VAR_INT); // Transaction id
             toOriginalEntityId.handle(wrapper);
@@ -198,6 +198,6 @@ public final class EntityPacketRewriter26_3 extends EntityRewriter<ClientboundPa
 
     @Override
     public EntityType typeFromId(final int type) {
-        return EntityTypes26_3.getTypeFromId(type);
+        return EntityTypes26_2.getTypeFromId(type);
     }
 }
