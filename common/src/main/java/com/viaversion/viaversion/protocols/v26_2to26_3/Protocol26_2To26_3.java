@@ -53,6 +53,7 @@ import com.viaversion.viaversion.protocols.v26_2to26_3.packet.ServerboundPackets
 import com.viaversion.viaversion.protocols.v1_21_11to26_1.packet.ServerboundPackets26_1;
 import com.viaversion.viaversion.protocols.v26_2to26_3.rewriter.BlockItemPacketRewriter26_3;
 import com.viaversion.viaversion.protocols.v26_2to26_3.rewriter.EntityPacketRewriter26_3;
+import com.viaversion.viaversion.protocols.v26_2to26_3.rewriter.RegistryDataRewriter26_3;
 import com.viaversion.viaversion.protocols.v26_2to26_3.storage.ProtocolStorables26_3;
 import com.viaversion.viaversion.rewriter.BlockRewriter;
 import com.viaversion.viaversion.rewriter.ParticleRewriter;
@@ -73,7 +74,7 @@ public final class Protocol26_2To26_3 extends AbstractProtocol<ClientboundPacket
     private final ParticleRewriter<ClientboundPacket26_1> particleRewriter = new ParticleRewriter<>(this);
     private final TagRewriter<ClientboundPacket26_1> tagRewriter = new TagRewriter<>(this);
     private final NBTComponentRewriter<ClientboundPacket26_1> componentRewriter = new NBTComponentRewriter<>(this);
-    private final RegistryDataRewriter registryDataRewriter = new RegistryDataRewriter(this);
+    private final RegistryDataRewriter registryDataRewriter = new RegistryDataRewriter26_3(this);
     private final RecipeDisplayRewriter1_21_5<ClientboundPacket26_1> recipeRewriter = new RecipeDisplayRewriter1_21_5<>(this);
 
     public Protocol26_2To26_3() {
