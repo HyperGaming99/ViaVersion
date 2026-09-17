@@ -24,6 +24,19 @@ public final class RegistryDataRewriter26_3 extends RegistryDataRewriter {
     public RegistryDataRewriter26_3(final Protocol26_2To26_3 protocol) {
         super(protocol);
         addMissingDamageTypes();
+        addMissingBlockTransformers();
+    }
+
+    private void addMissingBlockTransformers() {
+        addEntries("block_transformer",
+            emptyBlockTransformer("shovel"),
+            emptyBlockTransformer("axe"),
+            emptyBlockTransformer("hoe"),
+            emptyBlockTransformer("pickaxe"));
+    }
+
+    private static RegistryEntry emptyBlockTransformer(final String name) {
+        return new RegistryEntry("minecraft:" + name, new ListTag<>(CompoundTag.class));
     }
 
     private void addMissingDamageTypes() {
