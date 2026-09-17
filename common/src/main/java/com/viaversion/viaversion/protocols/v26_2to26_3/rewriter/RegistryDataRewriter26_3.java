@@ -36,7 +36,14 @@ public final class RegistryDataRewriter26_3 extends RegistryDataRewriter {
     }
 
     private static RegistryEntry emptyBlockTransformer(final String name) {
-        return new RegistryEntry("minecraft:" + name, new ListTag<>(CompoundTag.class));
+        final ListTag<CompoundTag> rules = new ListTag<>(CompoundTag.class);
+        final CompoundTag rule = new CompoundTag();
+        final CompoundTag provider = new CompoundTag();
+        provider.putString("type", "minecraft:simple");
+        provider.putString("state", "minecraft:dirt");
+        rule.put("block_state_provider", provider);
+        rules.add(rule);
+        return new RegistryEntry("minecraft:" + name, rules);
     }
 
     private void addMissingDamageTypes() {
