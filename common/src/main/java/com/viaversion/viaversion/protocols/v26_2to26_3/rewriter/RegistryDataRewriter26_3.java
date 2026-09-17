@@ -89,6 +89,17 @@ public final class RegistryDataRewriter26_3 extends RegistryDataRewriter {
             for (final Tag child : compound.values()) {
                 rewriteProviderTypes(child);
             }
+
+            // Inline block states changed from the network NBT form to the data-driven form.
+            final StringTag blockId = compound.removeUnchecked("Name");
+            if (blockId != null) {
+                compound.put("id", blockId);
+            }
+            final Tag properties = compound.remove("Properties");
+            if (properties != null) {
+                compound.put("properties", properties);
+            }
+
             final StringTag type = compound.getStringTag("type");
             if (type != null && type.getValue().endsWith("_state_provider")) {
                 type.setValue(type.getValue()
