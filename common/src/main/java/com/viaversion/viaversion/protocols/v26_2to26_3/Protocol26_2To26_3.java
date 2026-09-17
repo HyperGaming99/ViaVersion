@@ -154,7 +154,7 @@ public final class Protocol26_2To26_3 extends AbstractProtocol<ClientboundPacket
         // Left-clicking while punching is now its own packet; swing the main hand like the old swing packet did
         registerServerbound(ServerboundPackets26_1.SWING, ServerboundPackets26_3.PUNCH, wrapper -> wrapper.write(Types.VAR_INT, 0)); // Main hand
 
-        registerServerbound(ServerboundPackets26_3.SPECTATOR_ACTION, wrapper -> {
+        replaceServerbound(ServerboundPackets26_3.SPECTATOR_ACTION, wrapper -> {
             final Integer entityId = wrapper.read(Types.OPTIONAL_VAR_INT);
             if (entityId != null) {
                 wrapper.write(Types.VAR_INT, entityRewriter.toOriginalEntityId(wrapper, entityId));
