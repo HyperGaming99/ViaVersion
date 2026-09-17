@@ -18,7 +18,6 @@
 package com.viaversion.viaversion.protocols.v26_2to26_3.packet;
 
 import com.viaversion.viaversion.api.protocol.packet.State;
-import com.viaversion.viaversion.api.protocol.packet.ClientboundPacketType;
 
 public enum ClientboundConfigurationPackets26_3 implements ClientboundPacket26_3 {
 
