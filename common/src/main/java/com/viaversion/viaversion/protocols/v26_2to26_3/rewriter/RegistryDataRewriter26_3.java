@@ -25,6 +25,22 @@ public final class RegistryDataRewriter26_3 extends RegistryDataRewriter {
         super(protocol);
         addMissingDamageTypes();
         addMissingBlockTransformers();
+        addMissingPotteryPatterns();
+    }
+
+    private void addMissingPotteryPatterns() {
+        final String[] patterns = {
+            "angler", "archer", "arms_up", "blade", "brewer", "burn", "danger", "explorer", "flow", "friend",
+            "guster", "heart", "heartbreak", "howl", "miner", "mourner", "plenty", "prize", "scrape", "sheaf",
+            "shelter", "skull", "snort"
+        };
+        final RegistryEntry[] entries = new RegistryEntry[patterns.length];
+        for (int i = 0; i < patterns.length; i++) {
+            final CompoundTag tag = new CompoundTag();
+            tag.putString("asset_id", "minecraft:" + patterns[i] + "_pottery_pattern");
+            entries[i] = new RegistryEntry("minecraft:" + patterns[i], tag);
+        }
+        addEntries("decorated_pot_pattern", entries);
     }
 
     private void addMissingBlockTransformers() {
