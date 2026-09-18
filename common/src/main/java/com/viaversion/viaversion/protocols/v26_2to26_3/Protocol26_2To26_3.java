@@ -153,6 +153,10 @@ public final class Protocol26_2To26_3 extends AbstractProtocol<ClientboundPacket
             }
         });
 
+        // 26.2 recipe display entries are not safely decodable by the 26.3 client.
+        // This optional packet must not prevent the player from joining.
+        cancelClientbound(ClientboundPackets26_1.RECIPE_BOOK_ADD);
+
         // Left-clicking while punching is now its own packet; swing the main hand like the old swing packet did
         registerServerbound(ServerboundPackets26_1.SWING, ServerboundPackets26_3.PUNCH, wrapper -> wrapper.write(Types.VAR_INT, 0)); // Main hand
 
