@@ -71,7 +71,9 @@ public final class EntityPacketRewriter26_3 extends EntityRewriter<ClientboundPa
         protocol.appendClientbound(ClientboundPackets26_1.SET_ENTITY_DATA, setFakeEntityId);
         protocol.appendClientbound(ClientboundPackets26_1.SET_EQUIPMENT, setFakeEntityId);
         protocol.appendClientbound(ClientboundPackets26_1.PLAYER_COMBAT_KILL, setFakeEntityId);
-        protocol.appendClientbound(ClientboundPackets26_1.UPDATE_ATTRIBUTES, setFakeEntityId);
+        // 26.2 encodes the UPDATE_ATTRIBUTES entity id as an int rather than a varint.
+        protocol.appendClientbound(ClientboundPackets26_1.UPDATE_ATTRIBUTES, wrapper ->
+            wrapper.set(Types.INT, 0, toFakeEntityId(wrapper, wrapper.get(Types.INT, 0))));
         protocol.appendClientbound(ClientboundPackets26_1.REMOVE_ENTITIES, wrapper -> {
             final int[] entities = wrapper.get(Types.VAR_INT_ARRAY_PRIMITIVE, 0);
             for (int i = 0; i < entities.length; i++) {
