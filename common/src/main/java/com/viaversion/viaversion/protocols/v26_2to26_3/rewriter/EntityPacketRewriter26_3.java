@@ -55,7 +55,6 @@ public final class EntityPacketRewriter26_3 extends EntityRewriter<ClientboundPa
             wrapper.passthrough(Types.OPTIONAL_GLOBAL_POSITION); // Last death location
             wrapper.passthrough(Types.VAR_INT); // Portal cooldown
             wrapper.passthrough(Types.VAR_INT); // Sea level
-            wrapper.write(Types.BOOLEAN, storables.encrypted());
         });
 
         // Iterate through **all** packets containing an entity ID and replace it with a randomized negative value if the ID is zero,
